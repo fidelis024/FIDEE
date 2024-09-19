@@ -3,278 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Transfer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Transactions</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Settings</a></li>
-        </ul>
-    </nav>
-    <!-- Alerts and Notifications -->
-    <div class="alerts">
-        <h2>Notifications</h2>
-        <ul>
-            <li>
-                <span>Visitors:</span>
-                <span id="visitor-count">0</span>
-            </li>
-            <li>
-                <span>New Sign-ups:</span>
-                <span id="new-signups-count">0</span>
-            </li>
-            <li>
-                <span>Total Transactions:</span>
-                <span id="transaction-count">0</span>
-            </li>
-        </ul>
+    <h2>Transfer</h2>
+    <br>
+    <form>
+        <div class="form-grid">
+        <label for="transfer-type">Transfer Type:</label>
+        <div>
+        <input type="text" id="transfer-type" placeholder="Select..." readonly>
+        <div id="transfer-type-options" style="display: none;">
+        <p>External Transfer</p>
+        <P>Internal Transfer</P>
     </div>
-    <section id="wallet-management">
-        <h2>Wallet Management</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Balance</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="wallet-list">
-                <!-- Wallet list will be populated here -->
-            </tbody>
-        </table>
-        <button id="add-funds-btn">Add Funds</button>
-        <button id="remove-funds-btn">Remove Funds</button>
-    </section>
-
-    
-    
-    <!-- Cryptocurrency Section -->
-    <div class="cryptocurrencies">
-        <h2>Cryptocurrencies</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Cryptocurrency</th>
-                    <th>Price (USD)</th>
-                    <th>Balance</th>
-                    <th>Fund User</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Bitcoin (BTC)</td>
-                    <td id="btc-price">$0</td>
-                    <td id="btc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="btc">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Ethereum (ETH)</td>
-                    <td id="eth-price">$0</td>
-                    <td id="eth-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="eth">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Litecoin (LTC)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="ltc">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Usdt (USDT)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="usdt">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Bnb (BNB)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="bnb">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Solana (sol)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="sol">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Ripple (XRP)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="xrp">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Dogecoin (DOGE)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="doge">Fund</button></td>
-                </tr>
-                <tr>
-                    <td>Avalanche (AVAX)</td>
-                    <td id="ltc-price">$0</td>
-                    <td id="ltc-balance">0</td>
-                    <td><button class="fund-btn" data-crypto="avax">Fund</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- Fund User Modal -->
-    <div class="modal" id="fund-modal">
-        <h2>Fund User</h2>
-        <form>
-            <label for="user-id">User ID:</label>
-            <input type="text" id="user-id" required>
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" required>
-            <label for="crypto-type">Cryptocurrency:</label>
-            <select id="crypto-type">
-                <option value="btc">Bitcoin (BTC)</option>
-                <option value="eth">Ethereum (ETH)</option>
-                <option value="ltc">Litecoin (LTC)</option>
-                <option value="usdt">USDT (USDT)</option>
-                <option value="bnb">BNB (BNB)</option>
-                <option value="sol">Solana (SOL)</option>
-                <option value="xrp">Ripple(XRP)</option>
-                <option value="doge">Dogecoin (DOGE)</option>
-                <option value="avax">Avalanche (AVAX)</option>
-            </select>
-            <button id="fund-btn">Fund</button>
-        </form>
-    </div>
-    <section id="analytics-reporting">
-        <h2>Analytics and Reporting</h2>
-        <div class="metrics">
-            <!-- Key metrics will be displayed here -->
-        </div>
-        <div class="reports">
-            <!-- Reports will be generated and displayed here -->
-        </div>
-    </section>
-    
-    <section id="user-management"></section>
-        <h2>User Management</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="user-list">
-                <!-- User list will be populated here -->
-            </tbody>
-        </table>
-    </section>
-    <section id="notification-system">
-        <h2>Notifications</h2>
-        <ul id="notification-list">
-            <!-- Notifications will be populated here -->
-        </ul>
-    </section>
-    
-    <!-- Transaction History Section -->
-    <div class="transaction-history">
-        <h2>Transaction History</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Transaction ID</th>
-                    <th>User ID</th>
-                    <th>Cryptocurrency</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody id="transaction-history-body">
-                <!-- Transaction history will be populated here -->
-            </tbody>
-        </table>
     </div>
 
-    
+    <label for="medium">Medium:</label>
+    <div>
+    <select id="medium">
+        <option value="">Select a cryptocurrency</option>
+        <option value="BTC">Bitcoin (BTC)</option>
+        <option value="ETH">Ethereum (ETH)</option>
+        <option value="USDT">USDT (USDT)</option>
+        <option value="LTC">Litecoin (LTC)</option>
+        <option value="BNB">BNB (BNB)</option>
+        <option value="SOL">Solana (SOL)</option>
+        <option value="XRP">Ripple(XRP)</option>
+        <option value="DOGE">Dogecoin (DOGE)</option>
+        <option value="AVAX">Avalanche (AVAX)</option>
+    </select>
+</div>
 
+    <label for="wallet-address">Wallet Address</label>
+    <div>
+    <input type="text" id="wallet-address" placeholder="Enter wallet address...">
+</div>
+
+    <label for="amount">Amount:</label>
+    <div>
+    <input type="number" id="amount" placeholder="Enter amount...">
+</div>
+<br>
+<br>
+   <div>
+    <button type="submit" style="background-color: #4CAF50; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">Submit</button>
+    <button type="button" style="background-color: #ccc; color: #333; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;">Cancel</button>
+</div>
+</div>
+</form>
+<br>
+<br>
+<br>
+<br>
+<footer>
+    <div class="footer-info">
+        <h2>Copyright 2024 Swift-Coinvault</h2>
+        <p>All rights reserved.</p>
+        <p>Todays date: <span id="current-date"></span></p>
+    </div>
+</footer>
     <script>
-        // Get elements
-const fundModal = document.getElementById('fund-modal');
-const fundBtn = document.getElementById('fund-btn');
-const userIdInput = document.getElementById('user-id');
-const amountInput = document.getElementById('amount');
-const cryptoTypeSelect = document.getElementById('crypto-type');
+        const transferTypeInput = document.getElementById('transfer-type');
+const transferTypeOptions = document.getElementById('transfer-type-options');
 
-// Add event listener to fund button
-fundBtn.addEventListener('click', () => {
-    // Get user ID, amount, and cryptocurrency type
-    const userId = userIdInput.value;
-    const amount = amountInput.value;
-    const cryptoType = cryptoTypeSelect.value;
-
-    // Fund user account ( simulate funding )
-    console.log(`Funding user ${userId} with ${amount} ${cryptoType}...`);
-
-    // Close modal
-    fundModal.style.display = 'none';
+transferTypeInput.addEventListener('click', () => {
+  transferTypeOptions.style.display = 'block';
 });
 
-// Add event listener to fund buttons in cryptocurrency table
-document.querySelectorAll('.fund-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-        // Open modal
-        fundModal.style.display = 'block';
-        // Set cryptocurrency type
-        cryptoTypeSelect.value = btn.dataset.crypto;
-    });
+transferTypeOptions.addEventListener('click', (e) => {
+  if (e.target.tagName === 'P') {
+    transferTypeInput.value = e.target.textContent;
+    transferTypeOptions.style.display = 'none';
+  }
 });
 
-// Get the metrics and reports elements
-const metricsElement = document.querySelector('.metrics');
-const reportsElement = document.querySelector('.reports');
 
-// Define key metrics
-const metrics = [
-    { title: 'User Count', value: 1000 },
-    { title: 'Revenue', value: '$10,000' },
-    { title: 'Active Users', value: 500 },
-];
-
-// Populate the metrics section
-metrics.forEach(metric => {
-    const metricElement = document.createElement('div');
-    metricElement.innerHTML = `
-        <h3>${metric.title}</h3>
-        <p>${metric.value}</p>
-    `;
-    metricsElement.appendChild(metricElement);
+/*======== DATE JAVASCRIPT==*/
+document.addEventListener("DOMContentLoaded", function () {
+  const currentDateElement = document.getElementById("current-date");
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1; // Months are 0-based
+  const year = currentDate.getFullYear();
+  currentDateElement.innerHTML = `Today's date: ${day}/${month}/${year}`;
 });
-// Generate reports
-const generateReport = () => {
-    // Call API to generate report
-    fetch('/api/reports')
-        .then(response => response.json())
-        .then(report => {
-            const reportElement = document.createElement('div');
-            reportElement.innerHTML = `
-                <h3>Report</h3>
-                <p>${report.data}</p>
-            `;
-            reportsElement.appendChild(reportElement);
-        });
-};
 
-// Call generateReport function
-generateReport();
     </script>
-</body>
-</html>
-
-
 </body>
 </html>
